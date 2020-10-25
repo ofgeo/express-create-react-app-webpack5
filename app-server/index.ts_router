@@ -1,0 +1,42 @@
+import {Router} from 'express';
+import graphql from './graphql';
+
+const router = Router();
+
+router.use('/graphql', graphql);
+
+router.use((req, res) => {
+
+  const webpackStats = res.locals['webpackStats'];
+  console.log(Object.keys(webpackStats.compilation))
+  // const outputFileSystem = devMiddleware.outputFileSystem;
+  // const jsonWebpackStats = devMiddleware.stats.toJson();
+  // const {assetsByChunkName, outputPath} = jsonWebpackStats;
+
+  res.status(200).send('hahaha');
+  return;
+  // Then use `assetsByChunkName` for server-side rendering
+  // For example, if you have only one main chunk:
+  res.send(`
+<html>
+  <head>
+    <title>My App</title>
+    <style>
+    ${normalizeAssets(assetsByChunkName.main)
+      .filter((path) => path.endsWith('.css'))
+      .map((path) => outputFileSystem.readFileSync(path.join(outputPath, path)))
+      .join('\n')}
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    ${normalizeAssets(assetsByChunkName.main)
+      .filter((path) => path.endsWith('.js'))
+      .map((path) => `<script src="${path}"></script>`)
+      .join('\n')}
+  </body>
+  </html>
+  `);
+});
+
+export default router;

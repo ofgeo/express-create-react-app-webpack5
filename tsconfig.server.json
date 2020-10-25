@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "ts-node": {
+    "respawn": true,
+    "transpileOnly": true
+  },
+  "compilerOptions": {
+    "module": "commonjs"
+  },
+  "include": ["app-server"]
+}
