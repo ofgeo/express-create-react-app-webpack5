@@ -61,6 +61,7 @@ module.exports = {
   appSrc: resolveApp('src'),
   appServerSrc: resolveApp('app-server'),
   appTsConfig: resolveApp('tsconfig.json'),
+  appServerTsConfig: resolveApp('tsconfig.server.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),

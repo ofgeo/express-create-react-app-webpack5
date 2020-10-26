@@ -7,5 +7,7 @@
   "compilerOptions": {
     "module": "commonjs"
   },
-  "include": ["app-server"]
+  "include": [
+    "app-server"
+  ]
 }
